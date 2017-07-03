@@ -4,7 +4,11 @@ $(document).ready(function(){
 		type: 'GET',
 		url: API_URL + '/keywords',
 		success: function(data){
+
 			$('#word-proposition').html('');
+			$('#latest-arguments').html('');
+			$('#keywords-list').html('');
+			
 
 			/*data.forEach(function(keywordItem){
 				$('#word-proposition').append("<p>" + keywordItem.Article + ' ' +keywordItem.Keyword + "</p>");
@@ -19,12 +23,12 @@ $(document).ready(function(){
 			  return 1==1;
 			});
 
-			$('#latest-arguments').html('');
+
 			data.some(function(keywordItem) {
-			  var $this = keywordItem;
+				var $this = keywordItem;
+				$('#keywords-list').append('<li><a href="/define.php?term=Brooklan">' + $this.Keyword + '</a></li>');
 			    
 				$this.Arguments.some(function(argumentItem){
-			        console.log($this); 
 			        $('#latest-arguments').append(
 				  	'<div class="col-lg-6"><h4>'+ $this.Keyword +'</h4><p>' + argumentItem.Text + '</p></div>'
 				  	);
