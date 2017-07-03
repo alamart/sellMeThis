@@ -29,23 +29,22 @@ $(document).ready(function(){
 			    
 				$this.Arguments.some(function(argumentItem){
 			        $('#latest-arguments').append(
-				  	'<div class="col-lg-6">' +
-				  		'<div class="card">' +
+				  		'<div class="card p-3" data-argumentUUID="' + argumentItem.UUID + '" data-argumentTimeStamp="' + argumentItem.ArgumentTimestamp + '">' +
 						    '<div class="card-block">' +
 						      '<h4 class="card-title">' + $this.Keyword + '</h4>' +
 						      '<p class="card-text">' + argumentItem.Text + '</p>' +
 						      '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' +
-						      '<div class="btn-group" data-toggle="buttons">' +
+						      '<div class="btn-group thumbs" data-toggle="buttons">' +
 						      	'<label class="btn btn-primary active" aria-pressed="true">' +
-							      '<input type="radio" name="options" id="option1" autocomplete="off"><i class="fa fa-thumbs-up" aria-hidden="true"></i>' +
+							      '<input type="radio" name="options" id="upvote" autocomplete="off"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ' + argumentItem.Up +
 							    '</label>' +
 							    '<label class="btn btn-primary active" aria-pressed="true">' +
-							      '<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-thumbs-down" aria-hidden="true"></i>' +
+							      '<input type="radio" name="options" id="downvote" autocomplete="off"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ' + argumentItem.Down +
 							    '</label>' +
 						      '</div>' +
 						    '</div>' +
-						  '</div>' +
-					'</div>'
+						  '</div>' 
+
 				  	);
 			    });
 			  
@@ -74,3 +73,25 @@ $('#submitArgument').on('click', function(){
 
 	return false;
 });
+
+$('#upvote').on('click', function(){
+	$.ajax({
+		type: 'POST',
+		url: API_URL + '/vote',
+		data: JSON.stringify({
+								"ArgumentUUID": $('#argument').val(), 
+								"Keyword_id": $('#keyword_id').val(),
+								"KeywordTimestamp":$('#keywordTimestamp').val()
+							}),
+		contentType:"application/json",
+
+		success: function(data){
+			location.reload();
+		}
+	});
+
+	return false;
+});
+
+
+

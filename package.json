@@ -29,6 +29,7 @@
         "bootstrap": "^4.0.0-alpha.6",
         "font-awesome": "4.7.0",
         "jquery": "^3.2.1",
+        "jquery-lazyload": "^1.9.7",
         "jquery.easing": "^1.4.1",
         "tether": "^1.4.0"
     },
