@@ -25,7 +25,9 @@ def lambda_handler(event, context):
     newArgument = {
                 'UUID': str(uuid.uuid1()),
                 'ArgumentTimestamp' : int(time.time()),
-                'Text': event['Text']
+                'Text': event['Text'],
+                'Up': 0,
+                'Down': 0
             }
     
     arguments.append(newArgument)

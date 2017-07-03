@@ -15,13 +15,12 @@ $(document).ready(function(){
 				return keywordItem;
 			})*/
 
-			data.some(function(keywordItem) {
-			  $('#word-proposition').append("<p>" + keywordItem.Article + ' ' +keywordItem.Keyword + "</p>");
-			  $('#keyword_id').val(keywordItem.UUID);
-			  $('#keywordTimestamp').val(keywordItem.KeywordTimestamp);
+			/*Init header page*/
+			var keywordItem = data[Math.floor(Math.random()*data.length)];
+			$('#word-proposition').append("<p>" + keywordItem.Article + ' ' +keywordItem.Keyword + "</p>");
+			$('#keyword_id').val(keywordItem.UUID);
+			$('#keywordTimestamp').val(keywordItem.KeywordTimestamp);
 			  
-			  return 1==1;
-			});
 
 
 			data.some(function(keywordItem) {
@@ -30,10 +29,25 @@ $(document).ready(function(){
 			    
 				$this.Arguments.some(function(argumentItem){
 			        $('#latest-arguments').append(
-				  	'<div class="col-lg-6"><h4>'+ $this.Keyword +'</h4><p>' + argumentItem.Text + '</p></div>'
+				  	'<div class="col-lg-6">' +
+				  		'<div class="card">' +
+						    '<div class="card-block">' +
+						      '<h4 class="card-title">' + $this.Keyword + '</h4>' +
+						      '<p class="card-text">' + argumentItem.Text + '</p>' +
+						      '<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' +
+						      '<div class="btn-group" data-toggle="buttons">' +
+						      	'<label class="btn btn-primary active" aria-pressed="true">' +
+							      '<input type="radio" name="options" id="option1" autocomplete="off"><i class="fa fa-thumbs-up" aria-hidden="true"></i>' +
+							    '</label>' +
+							    '<label class="btn btn-primary active" aria-pressed="true">' +
+							      '<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-thumbs-down" aria-hidden="true"></i>' +
+							    '</label>' +
+						      '</div>' +
+						    '</div>' +
+						  '</div>' +
+					'</div>'
 				  	);
 			    });
-			  
 			  
 			});
 
