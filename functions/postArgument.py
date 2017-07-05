@@ -10,37 +10,21 @@ from botocore.exceptions import ClientError
 def lambda_handler(event, context):
     
     dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table('SMT_keywords')
-    
-    response = table.get_item(
-        Key={
-            'UUID': event['Keyword_id'],
-            'KeywordTimestamp' : int(event['KeywordTimestamp'])
-        }
-    )
-    
-    oldItem = response['Item']
-    arguments = oldItem.setdefault('Arguments', [])
+    table = dynamodb.Table('SMT_arguments')
     
     newArgument = {
-                'UUID': str(uuid.uuid1()),
+                'Keyworduuid': event['Keyword_id'],
                 'ArgumentTimestamp' : int(time.time()),
                 'Text': event['Text'],
                 'Up': 0,
-                'Down': 0
+                'Down': 0,
+                'PostedBy': 'Test ALVIN'
             }
-    
-    arguments.append(newArgument)
-    
-    table.update_item(
-        Key={
-            'UUID': oldItem['UUID'],
-            'KeywordTimestamp' : int(oldItem['KeywordTimestamp'])
-        },
-        UpdateExpression='SET Arguments = :val1',
-        ExpressionAttributeValues={
-            ':val1': arguments
-        }
+
+    table.put_item(
+        Item= newArgument
     )
+    
+
     
    
