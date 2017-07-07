@@ -25,7 +25,12 @@ $(document).ready(function(){
 
 			data.some(function(keywordItem) {
 				var $this = keywordItem;
-				$('#keywords-list').append('<li><a href="#">' + $this.Keyword + '</a></li>');
+				$('#keywords-list').append(
+					'<div class="card p-3">' +
+						    '<span>' + $this.Keyword + '</span>' +
+						  '</div>' 
+
+						   );
 			    
 			});
 
@@ -104,6 +109,8 @@ $('#submitArgument').on('click', function(){
 
 	return false;
 });
+
+
 
 
 
