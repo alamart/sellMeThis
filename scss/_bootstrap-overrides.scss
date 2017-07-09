@@ -17,3 +17,7 @@
     @include button-variant(white, $theme-primary, $theme-primary);
     @include heading-font;
 }
+
+.carousel-item.active {
+    display:block;
+}
