@@ -52,6 +52,11 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <form id="searchForm" name="sentMessage">
+                            <input class="form-control" type="search" name="q" placeholder="Type any word..." id="search-input">
+                        </form>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
@@ -73,7 +78,9 @@
                             
                             <div class="carousel-inner" id="carousel-words" role="listbox">
                                 <div class="carousel-item active text-center p-4">
-                                     <div class="intro-heading" id="word-proposition0">This</div>
+                                    <div class="intro-heading" id="word-proposition0">
+                                        <img src="img/SpinnerSMT.gif" alt="">
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -97,11 +104,39 @@
                         <div class="clearfix"></div>
                     </div>
                 </form>
-                <button id="submitArgument" class="btn btn-xl">Send</button>
-                <a href="#services" class="btn btn-xl " title="Share on twitter"><i class="fa fa-twitter"></i></a>
+                <button id="submitArgument" class="btn btn-xl">Submit</button>
             </div>
         </div>
     </header>
+
+    <!-- Portfolio Grid -->
+    <section class="bg-faded" style="display:none;" id="searchresults">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Search results</h2>
+                    </div>
+                    <ul class="nav nav-tabs" role="tablist"  id="href-search-keywords">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="trigger-search-arguments" data-toggle="tab" href data-target="#search-latest-arguments">Latest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="trigger-search-ratings" data-toggle="tab" href data-target="#search-best-ratings">Most rated</a>
+                        </li>
+                        
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content" id="tabs-search-keywords">
+                        <div class="tab-pane fade card-columns active show" id="search-latest-arguments" role="tabpanel"></div>
+                        <div class="tab-pane fade card-columns" id="search-best-ratings" role="tabpanel"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </section>
 
     <!-- ******ABOUT****** --> 
     <section id="about" class="about section">
@@ -127,8 +162,8 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Latest</h2>
-                        <h3 class="section-subheading text-muted">All the latest news</h3>
+                        <h2 class="section-heading">Arguments</h2>
+                        <h3 class="section-subheading text-muted">All time arguments</h3>
                     </div>
                     <ul class="nav nav-tabs" role="tablist"  id="href-keywords">
                         <li class="nav-item">
@@ -413,6 +448,7 @@
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.plugins.min.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 
     <script type="text/javascript">
         $(function() {
